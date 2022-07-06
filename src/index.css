@@ -8,7 +8,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Rubik Mono One', sans-serif;
+  font-family: 'Impact', sans-serif;
 }
 
 .small {
@@ -16,6 +16,68 @@ h6 {
   font-style: italic;
 }
 
+.navbarBG {
+  background-color: rgb(54, 54, 54);
+  box-shadow:
+		/* offset-x | offset-y | blur-radius | spread-radius | color */
+		0px 3px 4px 0px hsla(0,0%,0%,0.14), 
+		0px 3px 3px -2px hsla(0,0%,0%,0.12), 
+		0px 1px 8px 0px hsla(0,0%,0%,0.2);
+}
+
+.navbarCont {
+  background-color: rgb(68, 68, 68)!important ;
+}
+
+.navbarCont h2, h4 {  
+  color:rgb(209, 209, 209);
+}
+
+
+.pageTitle {
+  background-color: rgb(68, 68, 68);
+  color: rgb(209, 209, 209);
+  
+  border-radius: 5px;
+  padding-left: 2%;
+  box-shadow:
+		/* offset-x | offset-y | blur-radius | spread-radius | color */
+		0px 3px 4px 0px hsla(0,0%,0%,0.14), 
+		0px 3px 3px -2px hsla(0,0%,0%,0.12), 
+		0px 1px 8px 0px hsla(0,0%,0%,0.2);
+}
+
 .modal-backdrop {
-  display: none;
+  display: none!important;
+  background-color: none!important;
+}
+
+.card-title {
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 25px;
+  background-color: rgb(68, 68, 68);
+  color: white;
+  box-shadow:
+		/* offset-x | offset-y | blur-radius | spread-radius | color */
+		0px 1px 1px 0px hsla(0,0%,0%,0.14), 
+		0px 2px 1px -1px hsla(0,0%,0%,0.12), 
+		0px 1px 3px 0px hsla(0,0%,0%,0.2);
+
+}
+
+.card-body {
+  background-color: rgb(54, 54, 54);
+  border-radius: solid 0px white;
+  box-shadow:
+		/* offset-x | offset-y | blur-radius | spread-radius | color */
+		0px 3px 4px 0px hsla(0,0%,0%,0.14), 
+		0px 3px 3px -2px hsla(0,0%,0%,0.12), 
+		0px 1px 8px 0px hsla(0,0%,0%,0.2);
+  
+}
+
+.container {
+  background-color: #121212;
 }

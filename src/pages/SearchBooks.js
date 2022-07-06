@@ -1,14 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Jumbotron,
-  Container,
-  Modal,
-  Col,
-  Form,
-  Button,
-  Card,
-  CardColumns,
-} from "react-bootstrap";
+import { Container, Modal, Button, Card, CardColumns } from "react-bootstrap";
 import { searchALL, searchDnDAPI } from "../utils/API";
 import { saveSpellIndexs, getsavedSpellIndexs } from "../utils/localStorage";
 
@@ -60,15 +51,25 @@ const SearchBooks = () => {
         throw new Error("something went wrong!");
       }
       const items = await response.json();
+      console.log(items);
+      let spellClassesArr = await items.classes.map(function (asdasd) {
+        return asdasd.name + ", ";
+      });
+
+      let spellDescArr = await items.desc.map(function (asdasd) {
+        return asdasd + " ";
+      });
 
       const spellInfoData = {
         spellName: items.name,
         spellIndex: items.index,
         spellURL: items.url,
+        spellAOESize: items.area_of_effect?.size || "",
+        spellAOEType: items.area_of_effect?.type || "",
         spellCastingTime: items.casting_time,
-        spellClasses: items.classes.name,
+        spellClasses: spellClassesArr,
         spellComponents: items.components,
-        spellDesc: items.desc,
+        spellDesc: spellDescArr,
         spellDuration: items.duration,
         spellLevel: items.level,
         spellMaterial: items.material,
@@ -94,9 +95,9 @@ const SearchBooks = () => {
 
   return (
     <>
-      <Container>
+      <Container className="container">
         <br></br>
-        <h2>
+        <h2 className="pageTitle">
           {spells.length
             ? `Viewing ${spells.length} results:`
             : "DnD 5e Spells List"}
@@ -107,8 +108,10 @@ const SearchBooks = () => {
           {spells.map((spell) => {
             return (
               <Card key={spell.spellIndex} border="dark">
-                <Card.Body>
-                  <Card.Title>{spell.spellName}</Card.Title>
+                <Card.Body className="card-body">
+                  <Card.Title className="card-title">
+                    {spell.spellName}
+                  </Card.Title>
 
                   <Button
                     disabled={savedSpellIndexs?.some(
@@ -135,7 +138,41 @@ const SearchBooks = () => {
                     </Modal.Header>
 
                     <Modal.Body>
-                      <p>{spellInfo.spellDesc}</p>
+                      {spellInfo.spellAOESize && (
+                        <p>
+                          Spell Size: {spellInfo.spellAOESize}
+                          {" feet "}
+                          {spellInfo.spellAOEType}
+                        </p>
+                      )}
+
+                      {spellInfo.spellCastingTime && (
+                        <p>Casting Time: {spellInfo.spellCastingTime}</p>
+                      )}
+                      {spellInfo.spellDuration && (
+                        <p>Duration: {spellInfo.spellDuration}</p>
+                      )}
+                      {spellInfo.spellComponents && (
+                        <p>Components: {spellInfo.spellComponents}</p>
+                      )}
+                      {spellInfo.spellClasses && (
+                        <p>Classes: {spellInfo.spellClasses}</p>
+                      )}
+                      {spellInfo.spellSchool && (
+                        <p>School: {spellInfo.spellSchool}</p>
+                      )}
+                      {spellInfo.spellMaterial && (
+                        <p>Materials: {spellInfo.spellMaterial}</p>
+                      )}
+                      {spellInfo.spellRange && (
+                        <p>Range: {spellInfo.spellRange}</p>
+                      )}
+                      {spellInfo.spellLevel && (
+                        <p>Level: {spellInfo.spellLevel}</p>
+                      )}
+                      {spellInfo.spellDesc && (
+                        <p>Desc: {spellInfo.spellDesc}</p>
+                      )}
                     </Modal.Body>
 
                     <Modal.Footer>
