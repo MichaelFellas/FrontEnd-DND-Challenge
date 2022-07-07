@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/FrontEnd-DND-Challenge/static/css/main.0c28e963.chunk.css",
-    "main.js": "/FrontEnd-DND-Challenge/static/js/main.8a1c01a5.chunk.js",
-    "main.js.map": "/FrontEnd-DND-Challenge/static/js/main.8a1c01a5.chunk.js.map",
+    "main.js": "/FrontEnd-DND-Challenge/static/js/main.b0bea466.chunk.js",
+    "main.js.map": "/FrontEnd-DND-Challenge/static/js/main.b0bea466.chunk.js.map",
     "runtime-main.js": "/FrontEnd-DND-Challenge/static/js/runtime-main.8425b947.js",
     "runtime-main.js.map": "/FrontEnd-DND-Challenge/static/js/runtime-main.8425b947.js.map",
     "static/css/2.82750f7e.chunk.css": "/FrontEnd-DND-Challenge/static/css/2.82750f7e.chunk.css",
@@ -18,6 +18,6 @@
     "static/css/2.82750f7e.chunk.css",
     "static/js/2.8de1c6c4.chunk.js",
     "static/css/main.0c28e963.chunk.css",
-    "static/js/main.8a1c01a5.chunk.js"
+    "static/js/main.b0bea466.chunk.js"
   ]
 }
