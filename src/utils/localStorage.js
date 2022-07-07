@@ -2,7 +2,6 @@ export const getsavedSpellIndexs = () => {
   const savedSpellIndexs = localStorage.getItem("saved_spells")
     ? JSON.parse(localStorage.getItem("saved_spells"))
     : [];
-
   return savedSpellIndexs;
 };
 
@@ -26,7 +25,7 @@ export const removeSpellIndex = (spellIndex) => {
   const updatedsavedSpellIndexs = savedSpellIndexs?.filter(
     (savedSpellIndex) => savedSpellIndex !== spellIndex
   );
-  localStorage.setItem("saved_books", JSON.stringify(updatedsavedSpellIndexs));
+  localStorage.setItem("saved_spells", JSON.stringify(updatedsavedSpellIndexs));
 
   return true;
 };

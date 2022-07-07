@@ -25,9 +25,7 @@ h6 {
 		0px 1px 8px 0px hsla(0,0%,0%,0.2);
 }
 
-.navbarCont {
-  background-color: rgb(68, 68, 68)!important ;
-}
+
 
 .navbarCont h2, h4 {  
   color:rgb(209, 209, 209);
@@ -78,6 +76,45 @@ h6 {
   
 }
 
-.container {
+.card-text {
+  color:aliceblue;
+}
+
+.card-text-damage {
+  text-align: center;
+  font-size: 25px;
+}
+
+.containerPage {
   background-color: #121212;
+}
+
+.titleBuffer {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.modal {
+  max-height: 80vh;
+  overflow: auto;
+}
+.black{
+  color: black;
+}
+.damageTable {
+  
+  justify-content: baseline;
+  align-items: baseline;
+  margin-bottom: 2%;
+}
+
+.damageCol {
+ 
+  justify-content: baseline;
+  align-items: baseline;
+}
+
+.damageText {
+  border-bottom: white solid 1px;
+  border-top: white solid 1px;
 }

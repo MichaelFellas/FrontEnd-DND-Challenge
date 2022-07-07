@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Container, Modal, Button, Card, CardColumns } from "react-bootstrap";
+import {
+  Container,
+  Modal,
+  Button,
+  Card,
+  CardColumns,
+  Col,
+  Row,
+} from "react-bootstrap";
 import { searchALL, searchDnDAPI } from "../utils/API";
 import { saveSpellIndexs, getsavedSpellIndexs } from "../utils/localStorage";
 
@@ -51,7 +59,7 @@ const SearchBooks = () => {
         throw new Error("something went wrong!");
       }
       const items = await response.json();
-      console.log(items);
+
       let spellClassesArr = await items.classes.map(function (asdasd) {
         return asdasd.name + ", ";
       });
@@ -60,10 +68,24 @@ const SearchBooks = () => {
         return asdasd + " ";
       });
 
+      let spellDamageKeys = "";
+      let spellDamageArr = "";
+
+      if (items.damage) {
+        spellDamageArr = Object.values(
+          items.damage.damage_at_slot_level || items.damage_at_character_level
+        );
+        spellDamageKeys = Object.keys(
+          items.damage.damage_at_slot_level || items.damage_at_character_level
+        );
+      }
       const spellInfoData = {
         spellName: items.name,
         spellIndex: items.index,
         spellURL: items.url,
+        spellDamageKeys: spellDamageKeys || "",
+        spellDamage: spellDamageArr || "",
+        spellDamageType: items.damage?.damage_type || "",
         spellAOESize: items.area_of_effect?.size || "",
         spellAOEType: items.area_of_effect?.type || "",
         spellCastingTime: items.casting_time,
@@ -77,7 +99,7 @@ const SearchBooks = () => {
         spellRitual: items.ritual,
         spellSchool: items.school.name,
       };
-
+      console.log(spellDamageKeys);
       setSpellInfo(spellInfoData);
       handleShow();
     } catch (err) {
@@ -95,7 +117,7 @@ const SearchBooks = () => {
 
   return (
     <>
-      <Container className="container">
+      <Container className="containerPage">
         <br></br>
         <h2 className="pageTitle">
           {spells.length
@@ -152,12 +174,14 @@ const SearchBooks = () => {
                       {spellInfo.spellDuration && (
                         <p>Duration: {spellInfo.spellDuration}</p>
                       )}
+
                       {spellInfo.spellComponents && (
                         <p>Components: {spellInfo.spellComponents}</p>
                       )}
                       {spellInfo.spellClasses && (
                         <p>Classes: {spellInfo.spellClasses}</p>
                       )}
+
                       {spellInfo.spellSchool && (
                         <p>School: {spellInfo.spellSchool}</p>
                       )}
@@ -173,6 +197,35 @@ const SearchBooks = () => {
                       {spellInfo.spellDesc && (
                         <p>Desc: {spellInfo.spellDesc}</p>
                       )}
+                      {spellInfo.spellDamageKeys && (
+                        <Card.Text className="card-text-damage black">
+                          Damage
+                        </Card.Text>
+                      )}
+                      <Container className="damageTable">
+                        <Row>
+                          <Col className="damageCol">
+                            {spellInfo.spellDamageKeys &&
+                              spellInfo.spellDamageKeys.map((spellDamage) => {
+                                return (
+                                  <p className=" damageText">
+                                    Damage Level: {spellDamage}
+                                  </p>
+                                );
+                              })}
+                          </Col>
+                          <Col className="damageCol">
+                            {spellInfo.spellDamage &&
+                              spellInfo.spellDamage.map((spellDamage) => {
+                                return (
+                                  <p className=" damageText">
+                                    Dice: {spellDamage}
+                                  </p>
+                                );
+                              })}
+                          </Col>
+                        </Row>
+                      </Container>
                     </Modal.Body>
 
                     <Modal.Footer>
